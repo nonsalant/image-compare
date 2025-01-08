@@ -1,0 +1,21 @@
+@layer reset {
+	*, *:before, *:after { box-sizing: border-box; }
+	img { display: block; max-width: 100%; height: auto; }
+}
+
+@layer demo {
+	html { color-scheme: light dark; }
+	body {
+		font-family: system-ui;
+		font-family: 'SF Pro Text', 'SF Pro Icons', 'AOS Icons', 'Helvetica Neue', Helvetica, Arial, sans-serif, system-ui;
+		text-wrap: balance;
+		text-wrap: pretty;
+		line-height: 1.4;
+		padding-inline: 1lh;
+	}
+	a {
+		color: inherit; font-weight: bold;
+		text-decoration: none;
+		&:hover { text-decoration: underline; }
+	}
+}

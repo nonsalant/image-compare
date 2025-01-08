@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compare Web Component</title>
+    <link rel="stylesheet" href="./demo.css">
+
+    <!-- Style and script for the image-compare web component -->
+    <link rel="stylesheet" href="../src/image-compare.css">
+    <script src="../src/image-compare.js" defer></script>
+</head>
+<body>
+    <h1>Accessible 
+        <code style="white-space:nowrap;">&lt;image-compare&gt;</code>
+        <span>Web Component</span> 
+    </h1>
+
+    <h2>Example 1: Just two <code>&lt;img&gt;</code> tags</h2>
+
+    <image-compare>
+        <img alt="Alt text" src="earth-light.jpg" width="3584" height="2240" />
+        <img alt="Alt text" src="earth-dark.jpg" width="3584" height="2240" />
+    </image-compare>
+    
+    <h2>Example 2: With a caption, wrapped in a <code>&lt;figure&gt;</code>, and with an initial exposure of 24%</h2>
+    <figure>
+        <image-compare exposure="25">
+            <img alt="Alt text" src="earth-light.jpg" width="3584" height="2240" />
+            <img alt="Alt text" src="earth-dark.jpg" width="3584" height="2240" />
+        </image-compare>
+        <figcaption>Before/After</figcaption>
+    </figure>
+</body>
+</html>

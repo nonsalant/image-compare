@@ -1,0 +1,76 @@
+/* Remove default margin if nested in a figure */
+figure:has(image-compare) { margin-inline: 0; }
+
+image-compare {
+	& {
+		--exposure: 50%;
+		--thumb-background-color: hsla(0, 0%, 100%, 0.9);
+		/* --thumb-background-image: url(...); */
+		--thumb-size: clamp(3em, 10vmin, 5em);
+		--thumb-radius: 50%;
+		--thumb-border-color: hsla(0, 0%, 0%, 0.9);
+		--thumb-border-size: 2px;
+		--focus-width: var(--thumb-border-size);
+		--focus-color: hsl(200, 100%, 80%);
+		--divider-width: 2px;
+		--divider-color: hsla(0, 0%, 0%, 0.9);
+	}
+	& {
+		position: relative;
+		display: flex;
+		width: fit-content;
+		max-width: 100%;
+		margin-inline: auto;
+		img { width: 100%; height: auto; }
+		label {
+			position: absolute;
+			inset: 0;
+			display: flex;
+			align-items: stretch;
+		}
+		[type=range] {
+			cursor: col-resize;
+			appearance: none;
+			-webkit-appearance: none;
+			background: none;
+			border: none;
+			margin: 0 calc(var(--thumb-size) / -2);
+			width: calc(100% + var(--thumb-size));
+			height: unset;
+		}
+	}
+	&:not(:defined) {
+		flex-direction: row;
+		overflow-x: auto;
+	}
+	&:defined {
+		flex-direction: column;
+		overflow: clip;
+		.image-2-wrapper {
+			position: absolute;
+			top: 0;
+			/* shadow used for vertiacal divider */
+			filter: drop-shadow( calc(-1*var(--divider-width)) 0 0 var(--divider-color) );
+			img {
+				--_top-left: calc(var(--exposure) + var(--divider-width)/2);
+				--_bottom-left: calc(var(--exposure) + var(--divider-width)/2);
+				clip-path: polygon(var(--_top-left) 0, 100% 0, 100% 100%, var(--_bottom-left) 100%);
+			}
+		}
+	}
+	/* adjecent figcaption */
+	& + figcaption { 
+		text-align: center; 
+		margin-block-start: .5lh; 
+	}
+	/* utils */
+	.visually-hidden {
+		position: absolute;
+		width: 1px; height: 1px;
+		padding: 0; margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap; /* added line */
+		border: 0;
+	}
+}
