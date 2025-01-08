@@ -20,15 +20,14 @@ Load the style and the script:
 Use it like this:
 ```html
 <image-compare>
-    <img src="before.jpg" alt="Alt text">
-    <img src="after.jpg" alt="Alt text">
+    <img src="before.jpg" alt="">
+    <img src="after.jpg" alt="">
 </image-compare>
 ```
 
 <h2>Options</h2>
 
-Control how much of the first image is shown initially by adding an `exposure` attribute (0-100).
-<br><i>E.g:</i> 
+Control how much of the first image is shown initially by adding an `exposure` attribute (0-100). <br><i>E.g:</i> 
 * <code style="font-size:1.2em;">&lt;image-compare <b>exposure="0"</b>&gt;</code> will hide the first image,
 * a value of 100 will hide the second image,
 * and a value of 50 (default) will show half of each.
