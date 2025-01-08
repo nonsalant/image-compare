@@ -20,8 +20,8 @@ Load the style and the script:
 Use it like this:
 ```html
 <image-compare>
-    <img src="before.jpg" alt="">
-    <img src="after.jpg" alt="">
+    <img src="before.jpg" alt="" width="" height="">
+    <img src="after.jpg" alt="" width="" height="">
 </image-compare>
 ```
 
