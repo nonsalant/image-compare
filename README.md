@@ -11,13 +11,15 @@
 
 <h2>Usage</h2>
 
-Load the style and the script:
+1. Grab the files from the <code>src</code> folder.
+
+2. Load the style and the main script (adjust the paths as needed):
 ```html
 <link rel="stylesheet" href="../src/image-compare.css">
-<script src="../src/image-compare.js" defer></script>
+<script src="../src/image-compare.js" type="module"></script>
 ```
 
-Use it like this:
+3. Use it like this:
 ```html
 <image-compare>
     <img src="before.jpg" alt="" width="" height="">
@@ -27,10 +29,13 @@ Use it like this:
 
 <h2>Options</h2>
 
-Control how much of the first image is shown initially by adding an `exposure` attribute (0-100). <br><i>E.g:</i> 
-* <code style="font-size:1.2em;">&lt;image-compare <b>exposure="0"</b>&gt;</code> will hide the first image,
-* a value of 100 will hide the second image,
-* and a value of 50 (default) will show half of each.
+Control how much of the first image is shown initially by adding an `exposure` attribute with a value between 0 and 100.
+
+* 0 means the first image is completely hidden.
+* 100 means the first image is fully visible.
+* 50 means both images are half-shown, half-hidden.
+
+<i>E.g:</i> <code>&lt;image-compare <b>exposure="0"</b>&gt;</code>
 
 <h2>Credits</h2>
 
