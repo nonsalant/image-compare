@@ -15,7 +15,7 @@ class ImageCompare extends HTMLElement {
         this.#setPropPercentage('--exposure', this.#exposure);
         this.#wrapSecondImg('span', 'image-2-wrapper');
         this.#appendUi();
-        this.#setupInputListener('exposure');
+        this.#inputListeners('exposure');
         // Add CSS (limit to dynamically appended UI to avoid layout shift)
         updateCss(svgDataProp(), 'image-compare-thumb-svg-style');
         updateCss(sliderCss(), 'image-compare-slider-style');
@@ -36,20 +36,20 @@ class ImageCompare extends HTMLElement {
     #setPropPercentage(prop, value) {
         this.style.setProperty(prop, value + '%');
     }
-    #setupInputListener(attName) {
-        const rangeInput = this.querySelector(this.#inputSelector);
-        const handleInputChange = () => {
-            this.setAttribute(attName, rangeInput.value);
-        };
-        rangeInput.addEventListener('input', handleInputChange);
-        rangeInput.addEventListener('change', handleInputChange);
-    }
     #appendUi() {
         const rawHtml = uiHtml(this.#exposure);
         appendHtml(rawHtml, this);
     }
     #wrapSecondImg(tag, className) {
         wrap(this.#secondImg, tag, className);
+    }
+    #inputListeners(attName) {
+        const rangeInput = this.querySelector(this.#inputSelector);
+        const handleInputChange = () => {
+            this.setAttribute(attName, rangeInput.value);
+        };
+        rangeInput.addEventListener('input', handleInputChange);
+        rangeInput.addEventListener('change', handleInputChange);
     }
     
 }
