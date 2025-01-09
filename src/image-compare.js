@@ -24,6 +24,7 @@ class ImageCompare extends HTMLElement {
     static get observedAttributes() { return ['exposure']; }
 
     attributeChangedCallback(name, oldValue, newValue) {
+        if (oldValue === newValue) return;
         if (name === 'exposure') {
             const rangeInput = this.querySelector(this.#inputSelector);
             if (rangeInput) {
