@@ -2,7 +2,7 @@
 * Generates a CSS string that defines a `data:image/svg+xml` URL
 * for use as a background image in a custom CSS property.
 */
-export function svgCss(
+export function svgDataProp(
     strokeWidth = '4',
     color = 'hsla(0, 0%, 0%, 1)' // any format except hex
 ) {

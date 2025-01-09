@@ -1,5 +1,5 @@
 import { uiHtml } from './ui-html.js';
-import { svgCss } from './svg-css.js';
+import { svgDataProp } from './svg-data-prop.js';
 import { sliderCss } from './slider-css.js';
 import { appendHtml, wrap, updateCss } from './utils.js';
 
@@ -17,7 +17,7 @@ class ImageCompare extends HTMLElement {
         this.#appendUi();
         this.#setupInputListener("exposure");
         // Add CSS (limit to dynamically appended UI to avoid layout shift)
-        updateCss(svgCss(), 'image-compare-thumb-svg-style');
+        updateCss(svgDataProp(), 'image-compare-thumb-svg-style');
         updateCss(sliderCss(), 'image-compare-slider-style');
     }
 
