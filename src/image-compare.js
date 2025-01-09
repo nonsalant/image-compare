@@ -5,41 +5,44 @@ import { appendHtml, wrap, updateCss } from './utils.js';
 
 class ImageCompare extends HTMLElement {
     defaultExposure = 50;
-    #exposure = this.getAttribute("exposure") || this.defaultExposure;
+    #exposure = this.getAttribute('exposure') || this.defaultExposure;
     #inputSelector = 'input[type=range]';
-    #secondImg = this.querySelectorAll("img")[1];
+    #secondImg = this.querySelectorAll('img')[1];
 
     constructor() { super(); }
     
     connectedCallback() {
-        this.#setCustomPropPercentage("--exposure");
-        this.#wrapSecondImg("span", "image-2-wrapper");
+        this.#setPropPercentage('--exposure', this.#exposure);
+        this.#wrapSecondImg('span', 'image-2-wrapper');
         this.#appendUi();
-        this.#setupInputListener("exposure");
+        this.#setupInputListener('exposure');
         // Add CSS (limit to dynamically appended UI to avoid layout shift)
         updateCss(svgDataProp(), 'image-compare-thumb-svg-style');
         updateCss(sliderCss(), 'image-compare-slider-style');
     }
 
-    static get observedAttributes() { return ["exposure"]; }
+    static get observedAttributes() { return ['exposure']; }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if (name === "exposure") {
+        if (name === 'exposure') {
             const rangeInput = this.querySelector(this.#inputSelector);
             if (rangeInput) {
                 rangeInput.value = newValue;
-                this.style.setProperty("--exposure", newValue + "%");
+                this.#setPropPercentage('--exposure', newValue);
             }
         }
     }
 
+    #setPropPercentage(prop, value) {
+        this.style.setProperty(prop, value + '%');
+    }
     #setupInputListener(attName) {
         const rangeInput = this.querySelector(this.#inputSelector);
         const handleInputChange = () => {
             this.setAttribute(attName, rangeInput.value);
         };
-        rangeInput.addEventListener("input", handleInputChange);
-        rangeInput.addEventListener("change", handleInputChange);
+        rangeInput.addEventListener('input', handleInputChange);
+        rangeInput.addEventListener('change', handleInputChange);
     }
     #appendUi() {
         const rawHtml = uiHtml(this.#exposure);
@@ -48,9 +51,7 @@ class ImageCompare extends HTMLElement {
     #wrapSecondImg(tag, className) {
         wrap(this.#secondImg, tag, className);
     }
-    #setCustomPropPercentage(prop) {
-        this.style.setProperty(prop, this.#exposure + "%");
-    }
+    
 }
 
-customElements.define("image-compare", ImageCompare);
+customElements.define('image-compare', ImageCompare);

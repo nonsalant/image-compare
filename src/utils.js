@@ -1,5 +1,5 @@
 export function appendHtml(rawHtml, el) {
-    const tempDiv = document.createElement("div");
+    const tempDiv = document.createElement('div');
     tempDiv.innerHTML = rawHtml;
     while (tempDiv.firstChild) {
         el.appendChild(tempDiv.firstChild);
