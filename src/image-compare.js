@@ -9,6 +9,21 @@ class ImageCompare extends HTMLElement {
     inputSelector = 'input[type=range]';
     secondImg = this.querySelectorAll('img')[1];
 
+    // https://til.jakelazaroff.com/html/define-a-custom-element/
+    static tag = "not-image-compare";
+    static define(tag = this.tag) {
+        this.tag = tag;
+        const name = customElements.getName(this);
+        if (name) return console.warn(`${this.name} already defined as <${name}>!`);
+        const ce = customElements.get(tag);
+        if (Boolean(ce) && ce !== this) return console.warn(`<${tag}> already defined as ${ce.name}!`);
+        customElements.define(tag, this);
+    }
+    static {
+        const tag = new URL(import.meta.url).searchParams.get("define") || this.tag;
+        if (tag !== "false") this.define(tag);
+    }
+
     constructor() { super(); }
     
     connectedCallback() {
@@ -54,4 +69,4 @@ class ImageCompare extends HTMLElement {
     
 }
 
-customElements.define('image-compare', ImageCompare);
+// customElements.define('image-compare', ImageCompare);
