@@ -5,14 +5,14 @@ import { appendHtml, wrap, updateCss } from './utils.js';
 
 class ImageCompare extends HTMLElement {
     defaultExposure = 50;
-    #exposure = this.getAttribute('exposure') || this.defaultExposure;
-    #inputSelector = 'input[type=range]';
-    #secondImg = this.querySelectorAll('img')[1];
+    exposure = this.getAttribute('exposure') || this.defaultExposure;
+    inputSelector = 'input[type=range]';
+    secondImg = this.querySelectorAll('img')[1];
 
     constructor() { super(); }
     
     connectedCallback() {
-        this.#setPropPercentage('--exposure', this.#exposure);
+        this.#setPropPercentage('--exposure', this.exposure);
         this.#wrapSecondImg('span', 'image-2-wrapper');
         this.#appendUi();
         this.#inputListeners('exposure');
@@ -26,7 +26,7 @@ class ImageCompare extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue === newValue) return;
         if (name === 'exposure') {
-            const rangeInput = this.querySelector(this.#inputSelector);
+            const rangeInput = this.querySelector(this.inputSelector);
             if (rangeInput) {
                 rangeInput.value = newValue;
                 this.#setPropPercentage('--exposure', newValue);
@@ -38,14 +38,14 @@ class ImageCompare extends HTMLElement {
         this.style.setProperty(prop, value + '%');
     }
     #appendUi() {
-        const rawHtml = uiHtml(this.#exposure);
+        const rawHtml = uiHtml(this.exposure);
         appendHtml(rawHtml, this);
     }
     #wrapSecondImg(tag, className) {
-        wrap(this.#secondImg, tag, className);
+        wrap(this.secondImg, tag, className);
     }
     #inputListeners(attName) {
-        const rangeInput = this.querySelector(this.#inputSelector);
+        const rangeInput = this.querySelector(this.inputSelector);
         const handleInputChange = () => {
             this.setAttribute(attName, rangeInput.value);
         };
