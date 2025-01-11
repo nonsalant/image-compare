@@ -12,6 +12,8 @@
 		text-wrap: pretty;
 		line-height: 1.4;
 		padding-inline: 1lh;
+		max-width: 45rem;
+		margin-inline: auto;
 	}
 	a {
 		color: inherit; font-weight: bold;
