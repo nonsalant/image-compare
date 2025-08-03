@@ -1,0 +1,30 @@
+{
+    "name": "image-compare-light-dom",
+    "version": "1.0.0",
+    "description": "Accessible image comparison web component using Light DOM (no Shadow DOM).",
+    "type": "module",
+    "main": "image-compare.js",
+    "scripts": {
+        "prepublishOnly": "cp ../README.md ./README.md"
+    },
+    "keywords": [
+        "web-component",
+        "images",
+        "accessible",
+        "light-dom",
+        "comparison",
+        "before-after",
+        "slider",
+        "image-compare",
+        "image-comparison"
+    ],
+    "author": "Stefan Matei (https://stefanmatei.com)",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nonsalant/image-compare.git"
+    },
+    "bugs": {
+        "url": "https://github.com/nonsalant/image-compare/issues"
+    },
+    "homepage": "https://github.com/nonsalant/image-compare#readme"
+}

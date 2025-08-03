@@ -9,7 +9,15 @@
 
 [https://codepen.io/nonsalant/pen/gbYRJKd](https://codepen.io/nonsalant/pen/gbYRJKd)
 
-<h2>Usage</h2>
+<h2>Installation</h2>
+
+### Importing from a CDN
+````html
+<link rel="stylesheet" href="https://unpkg.com/image-compare-light-dom/image-compare.css">
+<script type="module" src="https://unpkg.com/image-compare-light-dom/image-compare.js"></script>
+````
+
+### Importing from a local copy
 
 1. Grab the files from the <code>src</code> folder.
 
@@ -18,6 +26,8 @@
 <link rel="stylesheet" href="../src/image-compare.css">
 <script src="../src/image-compare.js" type="module"></script>
 ```
+
+<h2>Usage</h2>
 
 3. Use it like this:
 ```html
