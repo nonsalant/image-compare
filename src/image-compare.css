@@ -1,5 +1,9 @@
-/* Remove default margin if nested in a figure */
-figure:has(image-compare) { margin-inline: 0; }
+/* Normalize figure/figcaption width */
+figure:has(image-compare) {
+	inline-size: fit-content;
+	margin-inline: auto;
+	figcaption { contain: inline-size; }
+}
 
 image-compare {
 	& {
