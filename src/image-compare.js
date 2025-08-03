@@ -3,7 +3,7 @@ import { svgDataProp } from './svg-data-prop.js';
 import { sliderCss } from './slider-css.js';
 import { appendHtml, wrap, updateCss } from './utils.js';
 
-class ImageCompare extends HTMLElement {
+export default class ImageCompare extends HTMLElement {
     defaultExposure = 50;
     exposure = this.getAttribute('exposure') || this.defaultExposure;
     inputSelector = 'input[type=range]';
@@ -51,7 +51,19 @@ class ImageCompare extends HTMLElement {
         rangeInput.addEventListener('input', handleInputChange);
         rangeInput.addEventListener('change', handleInputChange);
     }
-    
-}
 
-customElements.define('image-compare', ImageCompare);
+    // Statically define the element unless ?define=false is set as an URL param
+    static tag = "image-compare";
+    static define(tag = this.tag) {
+        this.tag = tag;
+        const name = customElements.getName(this);
+        if (name) return console.warn(`${this.name} already defined as <${name}>!`);
+        const ce = customElements.get(tag);
+        if (Boolean(ce) && ce !== this) return console.warn(`<${tag}> already defined as ${ce.name}!`);
+        customElements.define(tag, this);
+    }
+    static {
+        const tag = new URL(import.meta.url).searchParams.get("define") || this.tag;
+        if (tag !== "false") this.define(tag);
+    }
+}
