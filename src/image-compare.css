@@ -25,7 +25,8 @@ image-compare {
 		width: fit-content;
 		max-width: 100%;
 		margin-inline: auto;
-		img { width: 100%; height: auto; }
+		flex-direction: row;
+		overflow-x: auto;
 		label {
 			position: absolute;
 			inset: 0;
@@ -43,17 +44,13 @@ image-compare {
 			height: unset;
 		}
 	}
-	&:not(:defined) {
-		flex-direction: row;
-		overflow-x: auto;
-	}
 	&:defined {
 		flex-direction: column;
 		overflow: clip;
 		.image-2-wrapper {
 			position: absolute;
 			top: 0;
-			/* shadow used for vertiacal divider */
+			/* shadow used for vertical divider */
 			filter: drop-shadow( calc(-1*var(--divider-width)) 0 0 var(--divider-color) );
 			img {
 				--_top-left: calc(var(--exposure) + var(--divider-width)/2);
@@ -62,9 +59,9 @@ image-compare {
 			}
 		}
 	}
-	/* adjecent figcaption */
+	img { display: block; max-width: 100%; height: auto; }
+	/* adjacent figcaption */
 	& + figcaption { 
-		text-align: center; 
 		margin-block-start: .5lh; 
 	}
 	/* utils */

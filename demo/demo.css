@@ -1,6 +1,5 @@
 @layer reset {
 	*, *:before, *:after { box-sizing: border-box; }
-	img { display: block; max-width: 100%; height: auto; }
 }
 
 @layer demo {
