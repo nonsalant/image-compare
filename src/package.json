@@ -1,6 +1,6 @@
 {
     "name": "image-compare-light-dom",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Accessible image comparison web component using Light DOM (no Shadow DOM).",
     "type": "module",
     "main": "image-compare.js",

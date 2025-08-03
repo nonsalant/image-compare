@@ -9,7 +9,7 @@
 
 [https://codepen.io/nonsalant/pen/gbYRJKd](https://codepen.io/nonsalant/pen/gbYRJKd)
 
-<h2>Installation</h2>
+<h2>Importing the component files</h2>
 
 ### Importing from a CDN
 ````html
@@ -29,7 +29,6 @@
 
 <h2>Usage</h2>
 
-3. Use it like this:
 ```html
 <image-compare>
     <img src="before.jpg" alt="" width="" height="">
