@@ -6,27 +6,24 @@ figure:has(image-compare) {
 }
 
 image-compare {
-	& {
-		--exposure: 50%;
-		--thumb-background-color: hsla(0, 0%, 100%, 0.9);
-		/* --thumb-background-image: url(...); */
-		--thumb-size: clamp(3em, 10vmin, 5em);
-		--thumb-radius: 50%;
-		--thumb-border-color: hsla(0, 0%, 0%, 0.9);
-		--thumb-border-size: 2px;
-		--focus-width: var(--thumb-border-size);
-		--focus-color: hsl(200, 100%, 80%);
-		--divider-width: 2px;
-		--divider-color: hsla(0, 0%, 0%, 0.9);
-	}
+	--exposure: 50%;
+	--thumb-background-color: hsla(0, 0%, 100%, 0.9);
+	/* --thumb-background-image: url(...); */
+	--thumb-size: clamp(3em, 10vmin, 5em);
+	--thumb-radius: 50%;
+	--thumb-border-color: hsla(0, 0%, 0%, 0.9);
+	--thumb-border-size: 2px;
+	--focus-width: var(--thumb-border-size);
+	--focus-color: hsl(200, 100%, 80%);
+	--divider-width: 2px;
+	--divider-color: hsla(0, 0%, 0%, 0.9);
+	
 	& {
 		position: relative;
 		display: flex;
 		width: fit-content;
 		max-width: 100%;
 		margin-inline: auto;
-		flex-direction: row;
-		overflow-x: auto;
 		label {
 			position: absolute;
 			inset: 0;
@@ -44,6 +41,28 @@ image-compare {
 			height: unset;
 		}
 	}
+
+	&:not(:defined) {
+		flex-direction: row;
+		overflow-x: auto;
+		/* Scrollbar always visible on Mac OS (Chrome and Safari) */
+		scrollbar-gutter: stable;
+		/* margin-bottom: -6px; */
+		margin-bottom: -3px; /* compromise */
+		&::-webkit-scrollbar {
+			-webkit-appearance: none;
+			background-color: rgba(127,127,127,.10);
+			border-bottom-left-radius: 8px;
+			border-bottom-right-radius: 8px;
+			border-radius: 1em;
+		}
+		&::-webkit-scrollbar-thumb {
+			border-radius: 8px;
+			background-color: rgba(127,127,127,.40);
+			box-shadow: 0 0 1px rgba(127,127,127,1);
+		}
+	}
+
 	&:defined {
 		flex-direction: column;
 		overflow: clip;
@@ -59,11 +78,13 @@ image-compare {
 			}
 		}
 	}
+
+	/* normalize images */
 	img { display: block; max-width: 100%; height: auto; }
+
 	/* adjacent figcaption */
-	& + figcaption { 
-		margin-block-start: .5lh; 
-	}
+	& + figcaption { margin-block-start: .5lh; }
+	
 	/* utils */
 	.visually-hidden {
 		position: absolute;
